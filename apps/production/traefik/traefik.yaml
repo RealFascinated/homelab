@@ -14,27 +14,16 @@ metadata:
   name: traefik
   namespace: traefik
 spec:
+  interval: 30m
   chart:
     spec:
       chart: traefik
+      version: "31.1.1"
       sourceRef:
         kind: HelmRepository
         name: traefik
-      version: 31.1.1
-  interval: 1m0s
-  releaseName: traefik
-  targetNamespace: default
-  valuesFrom:
-    - kind: Secret
-      name: traefik-secret
----
-apiVersion: v1
-kind: Secret
-metadata:
-  creationTimestamp: null
-  name: traefik-secret
-  namespace: traefik
-stringData:
+        namespace: traefik
+      interval: 12h
   values.yaml: |
     globalArguments:
       - "--global.sendanonymoususage=false"
