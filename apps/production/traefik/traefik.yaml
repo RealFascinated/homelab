@@ -33,6 +33,7 @@ spec:
       - "--serversTransport.insecureSkipVerify=true"
       - "--log.level=INFO"
       - "--providers.kubernetescrd.allowCrossNamespace=true"
+      - "--accesslog"
 
     deployment:
       enabled: true
@@ -41,10 +42,6 @@ spec:
       podAnnotations: {}
       additionalContainers: []
       initContainers: []
-
-    logs:
-      # Enable access logs
-      access: true
 
     ports:
       web:
