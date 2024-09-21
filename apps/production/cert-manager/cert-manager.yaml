@@ -5,7 +5,7 @@ metadata:
   name: cert-manager
   namespace: cert-manager
 spec:
-  interval: 24h
+  interval: 12h
   url: https://charts.jetstack.io
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
