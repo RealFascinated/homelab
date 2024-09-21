@@ -42,6 +42,10 @@ spec:
       additionalContainers: []
       initContainers: []
 
+    logs:
+      # Enable access logs
+      access: true
+
     ports:
       web:
         redirectTo:
