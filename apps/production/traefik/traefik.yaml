@@ -33,7 +33,7 @@ spec:
       - "--serversTransport.insecureSkipVerify=true"
       - "--log.level=INFO"
       - "--providers.kubernetescrd.allowCrossNamespace=true"
-      - "--accesslog"
+      - "--accesslog=true"
 
     deployment:
       enabled: true
