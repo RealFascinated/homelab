@@ -1,9 +1,8 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: traefik-production
+namespace: cert-manager
 resources:
   - namespace.yaml
-  - rbac.yaml
-  - traefik.yaml
-  - service.yaml
+  - certificates/*.yaml
+  - issuers.yaml

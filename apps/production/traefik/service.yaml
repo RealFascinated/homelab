@@ -12,7 +12,6 @@ spec:
     app.kubernetes.io/name: traefik
   type: LoadBalancer
   loadBalancerIP: 10.0.69.250
-  externalTrafficPolicy: Local
   ports:
     - port: 80
       name: web
