@@ -51,14 +51,6 @@ spec:
             successThreshold: 1
             timeoutSeconds: 2
 
-          resources:
-            limits:
-              cpu: 1000m
-              memory: 1000Mi
-            requests:
-              cpu: 100m
-              memory: 50Mi
-
           ports:
             - name: web
               containerPort: 8000
