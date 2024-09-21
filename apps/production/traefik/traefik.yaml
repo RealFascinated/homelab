@@ -1,66 +1,96 @@
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRepository
 metadata:
   name: traefik
-  labels:
-    app.kubernetes.io/instance: traefik
-    app.kubernetes.io/name: traefik
+  namespace: traefik-production
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: traefik
-      app.kubernetes.io/instance: traefik
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: traefik
-        app.kubernetes.io/instance: traefik
+  interval: 1m0s
+  url: https://helm.traefik.io/traefik---
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: traefik-production
+spec:
+  chart:
     spec:
-      serviceAccountName: traefik-ingress-controller
-      terminationGracePeriodSeconds: 60
-      containers:
-        - name: traefik
-          image: traefik:3.1.4
-          args:
-            - "--entryPoints.web.address=:8000/tcp"
-            - "--entryPoints.websecure.address=:8443/tcp"
-            - "--ping=true"
-            - "--global.sendanonymoususage=false"
-            - "--global.checknewversion=false"
-            - "--serversTransport.insecureSkipVerify=true"
-            - "--log.level=INFO"
-            - "--providers.kubernetescrd"
-            - "--providers.kubernetescrd.allowCrossNamespace=true"
-            - "--providers.kubernetescrd.allowExternalNameServices=true"
-            - "--providers.kubernetesingress.allowCrossNamespace=true"
-            - "--providers.kubernetesingress.allowExternalNameServices=true"
-          readinessProbe:
-            httpGet:
-              path: /ping
-              port: 9000
-            failureThreshold: 1
-            initialDelaySeconds: 5
-            periodSeconds: 5
-            successThreshold: 1
-            timeoutSeconds: 2
+      chart: traefik
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+      version: 31.1.1
+  interval: 1m0s
+  releaseName: traefik
+  targetNamespace: default
+  valuesFrom:
+    - kind: Secret
+      name: traefik-secret
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: traefik-secret
+  namespace: traefik-production
+stringData:
+  values.yaml: |
+    globalArguments:
+      - "--global.sendanonymoususage=false"
+      - "--global.checknewversion=false"
 
-          livenessProbe:
-            httpGet:
-              path: /ping
-              port: 9000
-            failureThreshold: 3
-            initialDelaySeconds: 5
-            periodSeconds: 5
-            successThreshold: 1
-            timeoutSeconds: 2
+    additionalArguments:
+      - "--serversTransport.insecureSkipVerify=true"
+      - "--log.level=INFO"
+      - "--providers.kubernetescrd.allowCrossNamespace=true"
 
-          ports:
-            - name: web
-              containerPort: 8000
-              protocol: TCP
+    deployment:
+      enabled: true
+      replicas: 1
+      annotations: {}
+      podAnnotations: {}
+      additionalContainers: []
+      initContainers: []
 
-            - name: websecure
-              containerPort: 8443
-              protocol: TCP
+    ports:
+      web:
+        redirectTo:
+          port: websecure
+          priority: 10
+      websecure:
+        # http3:
+        #   enabled: true
+        # advertisedPort: 4443
+        tls:
+          enabled: true
+
+    ingressRoute:
+      dashboard:
+        enabled: false
+
+    providers:
+      kubernetesCRD:
+        enabled: true
+        ingressClass: traefik-external
+        allowExternalNameServices: true
+        allowCrossNamespace: true
+      kubernetesIngress:
+        enabled: true
+        allowExternalNameServices: true
+        allowCrossNamespace: true
+        publishedService:
+          enabled: false
+
+    rbac:
+      enabled: true
+
+    service:
+      enabled: true
+      type: LoadBalancer
+      annotations: {}
+      labels: {}
+      spec:
+        loadBalancerIP: 10.0.69.250 # this should be an IP in the MetalLB range
+      loadBalancerSourceRanges: []
+      externalIPs: []

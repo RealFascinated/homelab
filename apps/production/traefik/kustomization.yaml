@@ -4,6 +4,4 @@ kind: Kustomization
 namespace: traefik-production
 resources:
   - namespace.yaml
-  - rbac.yaml
   - traefik.yaml
-  - service.yaml

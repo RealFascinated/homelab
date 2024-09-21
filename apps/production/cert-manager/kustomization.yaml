@@ -4,5 +4,7 @@ kind: Kustomization
 namespace: cert-manager
 resources:
   - namespace.yaml
-  - certificates/*.yaml
+  - certificates/fascinated-cc.yaml
+  - certificates/local-fascinated-cc.yaml
+  - certificates/mcutils-xyz.yaml
   - issuers.yaml
