@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: wakatime-external
+  namespace: traefik
+spec:
+  type: ExternalName
+  externalName: 10.0.50.251
+  ports:
+    - name: http
+      port: 3355
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: wakatime-external-ingress
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`wakatime.fascinated.cc`)
+      kind: Rule
+      services:
+        - name: wakatime-external
+          port: 3355
+  tls:
+    secretName: fascinated-cc

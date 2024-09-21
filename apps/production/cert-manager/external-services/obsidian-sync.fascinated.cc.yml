@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: obsidian-sync-external
+  namespace: traefik
+spec:
+  type: ExternalName
+  externalName: 10.0.50.184
+  ports:
+    - name: http
+      port: 5984
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: obsidian-sync-external-ingress
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`obsidian-sync.fascinated.cc`)
+      kind: Rule
+      services:
+        - name: obsidian-sync-external
+          port: 5984
+  tls:
+    secretName: fascinated-cc

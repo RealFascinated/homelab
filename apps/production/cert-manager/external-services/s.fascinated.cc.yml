@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: slash-external
+  namespace: traefik
+spec:
+  type: ExternalName
+  externalName: 10.0.50.133
+  ports:
+    - name: http
+      port: 5231
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: slash-external-ingress
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`s.fascinated.cc`)
+      kind: Rule
+      services:
+        - name: slash-external
+          port: 5231
+  tls:
+    secretName: fascinated-cc

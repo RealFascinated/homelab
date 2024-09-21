@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: overseerr-external
+  namespace: traefik
+spec:
+  type: ExternalName
+  externalName: 10.0.0.136
+  ports:
+    - name: http
+      port: 5055
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: overseerr-external-ingress
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`overseerr.fascinated.cc`)
+      kind: Rule
+      services:
+        - name: overseerr-external
+          port: 5055
+  tls:
+    secretName: fascinated-cc

@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: tautulli-external
+  namespace: traefik
+spec:
+  type: ExternalName
+  externalName: 10.0.50.183
+  ports:
+    - name: http
+      port: 8181
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: tautulli-external-ingress
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`tautulli.fascinated.cc`)
+      kind: Rule
+      services:
+        - name: tautulli-external
+          port: 8181
+  tls:
+    secretName: fascinated-cc

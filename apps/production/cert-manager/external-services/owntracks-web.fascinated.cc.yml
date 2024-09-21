@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: owntracks-web-external
+  namespace: traefik
+spec:
+  type: ExternalName
+  externalName: 10.0.50.43
+  ports:
+    - name: http
+      port: 6969
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: owntracks-web-external-ingress
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`owntracks-web.fascinated.cc`)
+      kind: Rule
+      services:
+        - name: owntracks-web-external
+          port: 6969
+  tls:
+    secretName: fascinated-cc

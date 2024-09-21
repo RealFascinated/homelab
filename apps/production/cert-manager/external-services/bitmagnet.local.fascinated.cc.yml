@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: bitmagnet-local-external
+  namespace: traefik
+spec:
+  type: ExternalName
+  externalName: 10.0.50.142
+  ports:
+    - name: http
+      port: 3333
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: bitmagnet-local-external-ingress
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`bitmagnet.local.fascinated.cc`)
+      kind: Rule
+      services:
+        - name: bitmagnet-local-external
+          port: 3333
+  tls:
+    secretName: local-fascinated-cc

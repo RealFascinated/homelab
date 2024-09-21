@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: node-hl-01-external
+  namespace: traefik
+spec:
+  type: ExternalName
+  externalName: 10.0.50.222
+  ports:
+    - name: http
+      port: 443
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: node-hl-01-external-ingress
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`node-hl-01.fascinated.cc`)
+      kind: Rule
+      services:
+        - name: node-hl-01-external
+          port: 443
+  tls:
+    secretName: fascinated-cc

@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: azure-metrics-external
+  namespace: traefik
+spec:
+  type: ExternalName
+  externalName: 10.0.50.204
+  ports:
+    - name: http
+      port: 3000
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: azure-metrics-external-ingress
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`azure-metrics.fascinated.cc`)
+      kind: Rule
+      services:
+        - name: azure-metrics-external
+          port: 3000
+  tls:
+    secretName: fascinated-cc

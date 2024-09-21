@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: subscriptions-external
+  namespace: traefik
+spec:
+  type: ExternalName
+  externalName: 10.0.50.35
+  ports:
+    - name: http
+      port: 8282
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: subscriptions-external-ingress
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`subscriptions.fascinated.cc`)
+      kind: Rule
+      services:
+        - name: subscriptions-external
+          port: 8282
+  tls:
+    secretName: fascinated-cc

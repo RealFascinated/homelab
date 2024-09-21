@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: sonarr-anime-local-external
+  namespace: traefik
+spec:
+  type: ExternalName
+  externalName: 10.0.0.136
+  ports:
+    - name: http
+      port: 8988
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: sonarr-anime-local-external-ingress
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`sonarr-anime.local.fascinated.cc`)
+      kind: Rule
+      services:
+        - name: sonarr-anime-local-external
+          port: 8988
+  tls:
+    secretName: local-fascinated-cc

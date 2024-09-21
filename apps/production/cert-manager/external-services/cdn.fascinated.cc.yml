@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: cdn-external
+  namespace: traefik
+spec:
+  type: ExternalName
+  externalName: 10.0.0.136
+  ports:
+    - name: http
+      port: 8087
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: cdn-external-ingress
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`cdn.fascinated.cc`)
+      kind: Rule
+      services:
+        - name: cdn-external
+          port: 8087
+  tls:
+    secretName: fascinated-cc
