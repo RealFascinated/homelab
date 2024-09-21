@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: cert-manager
 resources:
   - namespace.yaml
+  - https://github.com/cert-manager/cert-manager/releases/download/v1.15.3/cert-manager.crds.yaml
   - cert-manager.yaml
   - issuer.yaml
   - ./certificates/fascinated-cc.yaml
