@@ -9,4 +9,3 @@ resources:
   - ./certificates/fascinated-cc.yaml
   - ./certificates/local-fascinated-cc.yaml
   - ./certificates/mcutils-xyz.yaml
-  - ./external-services
