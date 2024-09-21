@@ -5,5 +5,8 @@ namespace: traefik
 resources:
   - namespace.yaml
   - traefik.yaml
+  - ./certificates/fascinated-cc.yaml
+  - ./certificates/local-fascinated-cc.yaml
+  - ./certificates/mcutils-xyz.yaml
   #- ./external-services
   # for some stupid fucking reason kustomize doesn't support wildcards or globs?!?!?!??!?
