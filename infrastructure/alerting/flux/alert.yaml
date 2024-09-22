@@ -1,0 +1,19 @@
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: discord-alert
+  namespace: flux-system
+spec:
+  summary: "Discord Alert"
+  # eventMetadata:
+  #   env: "production"
+  #   cluster: "my-cluster"
+  #   region: "us-east-2"
+  providerRef:
+    name: discord-webhook
+  eventSeverity: info
+  eventSources:
+    - kind: GitRepository
+      name: "*"
+    - kind: Kustomization
+      name: "*"
