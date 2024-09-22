@@ -24,25 +24,25 @@ spec:
         name: monitoring
         namespace: monitoring
       interval: 12h
-    values:
-      # Prometheus Volume
-      prometheus:
-        prometheusSpec:
-          storageSpec:
-          volumeClaimTemplate:
-            spec:
-              storageClassName: nfs-csi
-              accessModes: ["ReadWriteOnce"]
-              resources:
-                requests:
-                  storage: 50Gi
-      # Grafana Volume
-      grafana:
-        grafanaSpec:
-          volumeClaimTemplate:
-            spec:
-              storageClassName: nfs-csi
-              accessModes: ["ReadWriteOnce"]
-              resources:
-                requests:
-                  storage: 5GiGi
+  values:
+    # Prometheus Volume
+    prometheus:
+      prometheusSpec:
+        storageSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: nfs-csi
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 50Gi
+    # Grafana Volume
+    grafana:
+      grafanaSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: nfs-csi
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 5GiGi
