@@ -4,3 +4,4 @@ kind: Kustomization
 namespace: public-services
 resources:
   - flyimg.yaml
+  - ingress.yaml
