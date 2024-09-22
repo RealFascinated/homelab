@@ -288,6 +288,8 @@ spec:
         - name: installer
           image: kubesphere/ks-installer:v3.4.0
           imagePullPolicy: "Always"
+          securityContext:
+            privileged: true
           resources:
             limits:
               cpu: "1"
@@ -295,12 +297,12 @@ spec:
             requests:
               cpu: 20m
               memory: 100Mi
-      #     volumeMounts:
-      #       - mountPath: /etc/localtime
-      #         name: host-time
-      #         readOnly: true
-      # volumes:
-      #   - hostPath:
-      #       path: /etc/localtime
-      #       type: ""
-      #     name: host-time
+          volumeMounts:
+            - mountPath: /etc/localtime
+              name: host-time
+              readOnly: true
+      volumes:
+        - hostPath:
+            path: /etc/localtime
+            type: ""
+          name: host-time
