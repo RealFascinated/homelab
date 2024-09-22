@@ -29,6 +29,7 @@ spec:
     prometheus:
       prometheusSpec:
         scrapeInterval: 1m # Must match interval in Grafana Helm chart
+        evaluationInterval: 30s
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
