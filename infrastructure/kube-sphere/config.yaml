@@ -8,7 +8,7 @@ metadata:
     version: v3.4.0
 spec:
   persistence:
-    storageClass: "" # If there is no default StorageClass in your cluster, you need to specify an existing StorageClass here.
+    storageClass: "nfs-csi" # If there is no default StorageClass in your cluster, you need to specify an existing StorageClass here.
   authentication:
     # adminPassword: ""     # Custom password of the admin user. If the parameter exists but the value is empty, a random password is generated. If the parameter does not exist, P@88w0rd is used.
     jwtSecret: "" # Keep the jwtSecret consistent with the Host Cluster. Retrieve the jwtSecret by executing "kubectl -n kubesphere-system get cm kubesphere-config -o yaml | grep -v "apiVersion" | grep jwtSecret" on the Host Cluster.
