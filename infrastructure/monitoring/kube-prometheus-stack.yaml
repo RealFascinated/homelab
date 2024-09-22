@@ -28,7 +28,7 @@ spec:
     # Prometheus Volume
     prometheus:
       prometheusSpec:
-        scrapeInterval: 1m # Must match interval in Grafana Helm chart
+        scrapeInterval: 30s
         evaluationInterval: 30s
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
@@ -41,7 +41,7 @@ spec:
           - auto-gomemlimit
           - memory-snapshot-on-shutdown
           - new-service-discovery-manager
-        retention: 14d
+        retention: 30d
         retentionSize: 40GB
         resources:
           requests:
