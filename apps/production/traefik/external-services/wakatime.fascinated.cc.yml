@@ -23,6 +23,9 @@ spec:
   routes:
     - match: Host(`wakatime.fascinated.cc`)
       kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: traefik
       services:
         - name: wakatime-external
           port: 3355

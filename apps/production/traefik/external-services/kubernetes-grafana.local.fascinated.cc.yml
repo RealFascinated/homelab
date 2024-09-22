@@ -11,6 +11,9 @@ spec:
   routes:
     - match: Host(`kubernetes-grafana.local.fascinated.cc`)
       kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: traefik
       services:
         - name: kube-prometheus-stack-grafana
           port: 80

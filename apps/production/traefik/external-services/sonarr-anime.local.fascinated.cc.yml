@@ -23,6 +23,9 @@ spec:
   routes:
     - match: Host(`sonarr-anime.local.fascinated.cc`)
       kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: traefik
       services:
         - name: sonarr-anime-local-external
           port: 8988

@@ -23,6 +23,9 @@ spec:
   routes:
     - match: Host(`status.fascinated.cc`)
       kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: traefik
       services:
         - name: status-external
           port: 3001

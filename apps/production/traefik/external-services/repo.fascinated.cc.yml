@@ -23,6 +23,9 @@ spec:
   routes:
     - match: Host(`repo.fascinated.cc`)
       kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: traefik
       services:
         - name: repo-external
           port: 8080

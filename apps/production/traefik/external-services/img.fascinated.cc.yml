@@ -23,6 +23,9 @@ spec:
   routes:
     - match: Host(`img.fascinated.cc`)
       kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: traefik
       services:
         - name: img-proxy-external
           port: 8080

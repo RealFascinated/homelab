@@ -23,6 +23,9 @@ spec:
   routes:
     - match: Host(`translate.fascinated.cc`)
       kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: traefik
       services:
         - name: translate-external
           port: 5000

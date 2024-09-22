@@ -23,6 +23,9 @@ spec:
   routes:
     - match: Host(`proxmox.local.fascinated.cc`)
       kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: traefik
       services:
         - name: proxmox-luna-local-external
           port: 8006

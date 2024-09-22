@@ -23,6 +23,9 @@ spec:
   routes:
     - match: Host(`overseerr.fascinated.cc`)
       kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: traefik
       services:
         - name: overseerr-external
           port: 5055

@@ -23,6 +23,9 @@ spec:
   routes:
     - match: Host(`wiki.fascinated.cc`)
       kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: traefik
       services:
         - name: wiki-external
           port: 80

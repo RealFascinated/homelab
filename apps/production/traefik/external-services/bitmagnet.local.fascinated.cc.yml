@@ -23,6 +23,9 @@ spec:
   routes:
     - match: Host(`bitmagnet.local.fascinated.cc`)
       kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: traefik
       services:
         - name: bitmagnet-local-external
           port: 3333
