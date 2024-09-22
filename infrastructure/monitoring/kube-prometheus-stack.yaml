@@ -29,13 +29,13 @@ spec:
     prometheus:
       prometheusSpec:
         storageSpec:
-        volumeClaimTemplate:
-          spec:
-            storageClassName: nfs-csi
-            accessModes: ["ReadWriteOnce"]
-            resources:
-              requests:
-                storage: 50Gi
+          volumeClaimTemplate:
+            spec:
+              storageClassName: nfs-csi
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 50Gi
     # Grafana Volume
     grafana:
       grafanaSpec:
