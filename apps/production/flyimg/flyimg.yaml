@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: flyimg-container
-          image: flyimg/flyimg
+          image: flyimg/flyimg:1.4.12
           ports:
             - containerPort: 80
 ---
