@@ -5,10 +5,11 @@
     "docker:enableMajor",
     "replacements:k8s-registry-move",
     ":semanticCommits",
+    ":disableRateLimiting",
+    ":skipStatusChecks",
     ":timezone(Europe/London)"
   ],
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
-  "ignorePaths": ["**/*.sops.*", "**/.archive/**", "**/resources/**"],
   "flux": {
     "fileMatch": ["\\.yaml$"]
   },
