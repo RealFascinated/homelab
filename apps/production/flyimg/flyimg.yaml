@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flyimg
+  namespace: public-services
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flyimg
+  template:
+    metadata:
+      labels:
+        app: flyimg
+    spec:
+      containers:
+        - name: flyimg-container
+          image: flyimg/flyimg
+          ports:
+            - containerPort: 80
