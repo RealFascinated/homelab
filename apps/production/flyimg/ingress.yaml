@@ -15,7 +15,7 @@ spec:
         - name: default-headers
           namespace: traefik
       services:
-        - name: flyimg
+        - name: flyimg-service
           port: 80
   tls:
     secretName: fascinated-cc

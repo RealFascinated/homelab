@@ -19,3 +19,15 @@ spec:
           image: flyimg/flyimg
           ports:
             - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flyimg-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: flyimg
