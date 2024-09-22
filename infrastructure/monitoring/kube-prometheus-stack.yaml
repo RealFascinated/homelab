@@ -28,6 +28,25 @@ spec:
     # Prometheus Volume
     prometheus:
       prometheusSpec:
+        scrapeInterval: 1m # Must match interval in Grafana Helm chart
+        ruleSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
+        probeSelectorNilUsesHelmValues: false
+        scrapeConfigSelectorNilUsesHelmValues: false
+        enableAdminAPI: true
+        walCompression: true
+        enableFeatures:
+          - auto-gomemlimit
+          - memory-snapshot-on-shutdown
+          - new-service-discovery-manager
+        retention: 14d
+        retentionSize: 40GB
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            memory: 1500Mi
         storageSpec:
           volumeClaimTemplate:
             spec:
@@ -36,13 +55,3 @@ spec:
               resources:
                 requests:
                   storage: 50Gi
-    # Grafana Volume
-    grafana:
-      grafanaSpec:
-        volumeClaimTemplate:
-          spec:
-            storageClassName: nfs-csi
-            accessModes: ["ReadWriteOnce"]
-            resources:
-              requests:
-                storage: 5GiGi
