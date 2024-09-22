@@ -7,5 +7,5 @@ resources:
   - metallb
   - nfs
   - traefik
-  - monitoring
+  #- monitoring
   - alerting/flux

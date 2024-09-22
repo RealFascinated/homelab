@@ -24,3 +24,11 @@ spec:
         name: monitoring
         namespace: monitoring
       interval: 12h
+    values:
+      grafana:
+        persistence:
+          enabled: true
+          storageClassName: "nfs-csi"
+          accessModes:
+            - ReadWriteOnce
+          size: 20Gi
