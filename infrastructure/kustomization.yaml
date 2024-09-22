@@ -7,6 +7,5 @@ resources:
   - metallb
   - nfs
   - traefik
-  - kube-sphere
-  #- monitoring
+  - monitoring
   - alerting/flux
