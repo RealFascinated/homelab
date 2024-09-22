@@ -1,3 +1,13 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Provider
+metadata:
+  name: discord
+  namespace: flux-system
+spec:
+  type: discord
+  address: "https://discord.com/api/webhooks/1287224007820574841/4lZh3e3OxI6Qu0BnzyEBzbGBc3tdhzWG66Dh9t8RdVbenClhOOAnqooclrw1amRoY5nB"
+---
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
 metadata:
@@ -5,10 +15,6 @@ metadata:
   namespace: flux-system
 spec:
   summary: "Discord Alert"
-  # eventMetadata:
-  #   env: "production"
-  #   cluster: "my-cluster"
-  #   region: "us-east-2"
   providerRef:
     name: discord-webhook
   eventSeverity: info
