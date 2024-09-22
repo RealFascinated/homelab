@@ -10,6 +10,7 @@
     ":timezone(Europe/London)"
   ],
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "ignorePaths": ["**/*.sops.*", "**/.archive/**", "**/resources/**"],
   "flux": {
     "fileMatch": ["\\.yaml$"]
   },
