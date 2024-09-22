@@ -477,7 +477,7 @@ cluster:
         # disabled: false
     # Scheduler server specific configuration options.
     scheduler:
-        image: registry.k8s.io/kube-scheduler:v1.30.3 # The container image used in the scheduler manifest.
+        image: registry.k8s.io/kube-scheduler:v1.31.1 # The container image used in the scheduler manifest.
     # Configures cluster member discovery.
     discovery:
         enabled: true # Enable the cluster membership discovery feature.
