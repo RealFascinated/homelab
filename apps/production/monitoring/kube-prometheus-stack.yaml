@@ -24,10 +24,3 @@ spec:
         name: monitoring
         namespace: monitoring
       interval: 12h
-  values:
-    nodeExporter:
-    hostNetwork: false
-    hostPID: false
-    service:
-      port: 9100 # Use a different port if needed
-
