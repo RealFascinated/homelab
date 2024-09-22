@@ -2,7 +2,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: prometheus-community
+  name: monitoring
   namespace: monitoring
 spec:
   interval: 12h
@@ -21,7 +21,7 @@ spec:
       version: "62.7.0"
       sourceRef:
         kind: HelmRepository
-        name: prometheus-community
+        name: monitoring
         namespace: monitoring
       interval: 12h
   #values: {}
