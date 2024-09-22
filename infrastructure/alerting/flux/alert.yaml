@@ -16,7 +16,7 @@ metadata:
 spec:
   summary: "Discord Alert"
   providerRef:
-    name: discord-webhook
+    name: discord # Changed from discord-webhook to discord
   eventSeverity: info
   eventSources:
     - kind: GitRepository
