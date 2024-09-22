@@ -305,12 +305,12 @@ spec:
             requests:
               cpu: 20m
               memory: 100Mi
-          volumeMounts:
-            - mountPath: /etc/localtime
-              name: host-time
-              readOnly: true
-      volumes:
-        - hostPath:
-            path: /etc/localtime
-            type: ""
-          name: host-time
+      #     volumeMounts:
+      #       - mountPath: /etc/localtime
+      #         name: host-time
+      #         readOnly: true
+      # volumes:
+      #   - hostPath:
+      #       path: /etc/localtime
+      #       type: ""
+      #     name: host-time
