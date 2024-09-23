@@ -17,8 +17,17 @@ spec:
       containers:
         - name: flyimg-container
           image: flyimg/flyimg:1.4.12
+          securityContext:
+            allowPrivilegeEscalation: false
           ports:
             - containerPort: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: 200Mi
+            limits:
+              cpu: 500m
+              memory: 300Mi
 ---
 apiVersion: v1
 kind: Service
