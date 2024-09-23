@@ -31,7 +31,7 @@ spec:
             - name: DRONE_RPC_HOST
               value: drone.fascinated.cc
             - name: DRONE_RPC_PROTO
-              value: http
+              value: https
             - name: DRONE_RPC_SECRET
               valueFrom:
                 secretKeyRef:
