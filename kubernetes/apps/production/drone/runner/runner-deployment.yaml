@@ -29,7 +29,7 @@ spec:
               memory: 200Mi
           env:
             - name: DRONE_RPC_HOST
-              value: drone.local.fascinated.cc
+              value: drone.fascinated.cc
             - name: DRONE_RPC_PROTO
               value: http
             - name: DRONE_RPC_SECRET

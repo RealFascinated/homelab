@@ -10,7 +10,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`drone.local.fascinated.cc`)
+    - match: Host(`drone.fascinated.cc`)
       kind: Rule
       middlewares:
         - name: default-headers
@@ -19,4 +19,4 @@ spec:
         - name: drone-service
           port: 80
   tls:
-    secretName: local-fascinated-cc
+    secretName: fascinated-cc
