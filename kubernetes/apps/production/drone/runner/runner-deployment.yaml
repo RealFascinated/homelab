@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: drone
+  name: drone-runner
   namespace: drone-ci
   labels:
     app.kubernetes.io/name: drone
