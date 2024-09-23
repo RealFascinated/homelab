@@ -35,6 +35,14 @@ spec:
       - "--providers.kubernetescrd.allowCrossNamespace=true"
       - "--accesslog=true"
 
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 500m
+        memory: 1Gi # Update when traefik fixes their shitty mem leak
+
     deployment:
       enabled: true
       replicas: 1
