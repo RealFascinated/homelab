@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drone-deployment
+  namespace: drone-ci
+  labels:
+    app: drone
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drone
+  template:
+    metadata:
+      labels:
+        app: drone
+    spec:
+      containers:
+        - name: drone
+          image: drone/drone:2
+          ports:
+            - containerPort: 80
+            - containerPort: 443
+          env:
+            - name: DRONE_GITEA_SERVER
+              value: "https://try.gitea.io"
+            - name: DRONE_GITEA_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: drone-secret
+                  key: DRONE_GITEA_CLIENT_ID
+            - name: DRONE_GITEA_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: drone-secret
+                  key: DRONE_GITEA_CLIENT_SECRET
+            - name: DRONE_RPC_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: drone-secret
+                  key: DRONE_RPC_SECRET
+            - name: DRONE_SERVER_HOST
+              value: "drone.local.fascinated.cc"
+            - name: DRONE_SERVER_PROTO
+              value: "https"
+          volumeMounts:
+            - name: drone-data
+              mountPath: /data
+      volumes:
+        - name: drone-data
+          persistentVolumeClaim:
+            claimName: drone-pvc
