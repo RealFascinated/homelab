@@ -11,17 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Scan yaml files with kube-linter
-        uses: stackrox/kube-linter-action@v1.0.5
-        id: kube-linter-action-scan
+      - name: Setup Go
+        uses: actions/setup-go@v4
         with:
-          directory: apps
-          config: .kube-linter-config.yaml
-          format: plain
-        continue-on-error: true
+          go-version: "1.23.3"
 
-      - name: Verify kube-linter-action succeeded
-        shell: bash
+      - name: Install kube-linter
         run: |
-          echo "If this step fails, kube-linter found issues. Check the output of the scan step above."
-          [[ "${{ steps.kube-linter-action-scan.outcome }}" == "success" ]]
+          go install golang.stackrox.io/kube-linter/cmd/kube-linter@latest
+
+      - name: Scan yaml files with kube-linter
+        run: |
+          kube-linter lint ./apps
