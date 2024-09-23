@@ -10,6 +10,7 @@ data:
     # Debug
     debug: false
 
+
     # Home page title
     home_page_title: Flyimg
 
