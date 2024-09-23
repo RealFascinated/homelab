@@ -1,0 +1,27 @@
+name: Check Kubernetes YAMLs
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Scan yaml files with kube-linter
+        uses: stackrox/kube-linter-action@v1.0.5
+        id: kube-linter-action-scan
+        with:
+          directory: apps
+          config: .kube-linter-config.yaml
+          format: plain
+        continue-on-error: true
+
+      - name: Verify kube-linter-action succeeded
+        shell: bash
+        run: |
+          echo "If this step fails, kube-linter found issues. Check the output of the scan step above."
+          [[ "${{ steps.kube-linter-action-scan.outcome }}" == "success" ]]
