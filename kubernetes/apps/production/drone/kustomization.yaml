@@ -6,8 +6,8 @@ resources:
   - namespace.yaml
   - ./server/sealed-secrets.yaml
   - ./server/pvc.yaml
-  - ./server/deployment.yaml
+  - ./server/server-deployment.yaml
   - ./server/service.yaml
   - ./server/ingress.yaml
-  - ./runner/deployment.yaml
+  - ./runner/runner-deployment.yaml
   - ./runner/rbac.yaml
