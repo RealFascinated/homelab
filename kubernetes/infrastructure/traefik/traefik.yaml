@@ -34,7 +34,6 @@ spec:
       - "--providers.kubernetescrd.allowCrossNamespace=true"
       - "--log.level=INFO"
       - "--accesslog=true"
-      - "--metrics.prometheus=false"
 
     resources:
       requests:
@@ -43,6 +42,9 @@ spec:
       limits:
         cpu: 1000m # 1 vCPU
         memory: 1024Mi # Update when traefik fixes their shitty mem leak
+
+    metrics:
+      prometheus: null
 
     deployment:
       enabled: true
