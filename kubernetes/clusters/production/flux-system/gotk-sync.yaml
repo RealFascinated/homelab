@@ -6,12 +6,12 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  interval: 10s
+  interval: 1m0s
   ref:
     branch: master
   secretRef:
     name: flux-system
-  url: https://git.fascinated.cc/fascinated/home-ops.git
+  url: https://git.fascinated.cc/fascinated/homelab.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
