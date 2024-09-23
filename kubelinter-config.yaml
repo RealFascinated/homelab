@@ -1,0 +1,4 @@
+checks:
+  runAsNonRoot: false # Disable the check for running as root
+  include: []
+  exclude: []
