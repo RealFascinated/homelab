@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: drone-deployment
+  name: drone
   namespace: drone-ci
   labels:
     app: drone
