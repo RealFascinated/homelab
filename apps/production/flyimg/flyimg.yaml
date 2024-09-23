@@ -24,15 +24,35 @@ spec:
           resources:
             requests:
               cpu: 50m
-              memory: 200Mi
+              memory: 100Mi
             limits:
-              cpu: 500m
-              memory: 300Mi
+              cpu: 100m
+              memory: 250Mi
+          volumeMounts:
+            - name: flyimg-storage
+              mountPath: /var/www/html/web/uploads
+      volumes:
+        - name: flyimg-storage
+          persistentVolumeClaim:
+            claimName: flyimg-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: flyimg-pvc
+  namespace: public-services
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: flyimg-service
+  namespace: public-services
 spec:
   type: ClusterIP
   ports:
