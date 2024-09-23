@@ -41,13 +41,15 @@ spec:
           volumeMounts:
             - name: flyimg-storage
               mountPath: /var/www/html/web/uploads
-      mountVolumes:
+            - name: config-volume
+              mountPath: /var/www/html/config/parameters.yml
+      volumes:
         - name: flyimg-storage
           persistentVolumeClaim:
             claimName: flyimg-pvc
         - name: config-volume
-          mountPath: /var/www/html/config/parameters.yml
-          subPath: parameters.yml
+          configMap:
+            name: flyimg-config
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
