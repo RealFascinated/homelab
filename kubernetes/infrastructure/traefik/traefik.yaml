@@ -36,12 +36,12 @@ spec:
       - "--accesslog=true"
 
     resources:
-      limits:
+      requests:
         cpu: 100m
         memory: 128Mi
-      requests:
-        cpu: 500m
-        memory: 1Gi # Update when traefik fixes their shitty mem leak
+      limits:
+        cpu: 1000m # 1 vCPU
+        memory: 1024Mi # Update when traefik fixes their shitty mem leak
 
     deployment:
       enabled: true
