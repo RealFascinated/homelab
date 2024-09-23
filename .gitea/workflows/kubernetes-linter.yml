@@ -4,16 +4,17 @@ on:
   push:
     branches: [main, master]
     paths:
-      - "apps/**"
+      - "kubernetes/apps/**"
   pull_request:
     paths:
-      - "apps/**"
+      - "kubernetes/apps/**"
 
 jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup Go
         uses: actions/setup-go@v5
@@ -36,4 +37,4 @@ jobs:
 
       - name: Scan yaml files with kube-linter
         run: |
-          kube-linter lint ./apps
+          kube-linter lint .kubernetes/apps
