@@ -1,7 +1,3 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-
-<a id="readme-top"></a>
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -14,14 +10,11 @@
   <p align="center">
     Welcome to the configuration for my homelab.
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://git.fascinated.cc/Fascinated/home-ops/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://git.fascinated.cc/Fascinated/home-ops/issues">Request Something</a>
+
   </p>
 </div>
 
@@ -43,13 +36,9 @@
   </ol>
 </details>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ### Built With
 
 - [![FluxCD]][fluxcd]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- TODO -->
 
@@ -58,8 +47,6 @@
 - [ ] Hashicorp Vault & Consul
 
 See the [open issues](https://git.fascinated.cc/Fascinated/home-ops/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 
@@ -75,8 +62,6 @@ Don't forget to give the project a star! Thanks again!
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
