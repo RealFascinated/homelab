@@ -19,7 +19,6 @@ spec:
           image: flyimg/flyimg:1.4.12
           securityContext:
             allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: true
           ports:
             - containerPort: 80
           resources:
