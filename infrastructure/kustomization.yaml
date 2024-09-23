@@ -11,4 +11,4 @@ resources:
   - capacitor
   - monitoring
   - alerting/flux
-  - backup
+  #- backup
