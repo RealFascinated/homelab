@@ -34,9 +34,7 @@ See [services](./apps/production/) for a list of services that I use in my homel
 
 ## Todo
 
-- [ ] Hashicorp Vault & Consul
-  - [ ] Migrate secrets to Vault
-- [ ] DroneCI
+- [ ] Migrate my apps from Dokku to DroneCI
 
 ### Backlog
 
