@@ -18,27 +18,19 @@
   </p>
 </div>
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#todo">Todo</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-  </ol>
-</details>
+### Infrastructure
 
-### Built With
+- [![Kubernetes][k8s]]
+- [![Helm][helm]]
+- [![Traefik][traefik]]
+- [![Cert Manager][cert-manager]]
+- [![Metallb][metallb]]
+- [![NFS][nfs]]
+- [![FluxCD][fluxcd]]
 
-- [![FluxCD]][fluxcd]
+### Services
+
+See [services](./apps/production/) for a list of services that I use in my homelab.
 
 <!-- TODO -->
 
@@ -67,3 +59,9 @@ Don't forget to give the project a star! Thanks again!
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [fluxcd]: https://fluxcd.io
+[k8s]: https://kubernetes.io
+[helm]: https://helm.sh
+[traefik]: https://traefik.io
+[cert-manager]: https://cert-manager.io
+[metallb]: https://metallb.org
+[nfs]: https://nfs.fascinated.cc
