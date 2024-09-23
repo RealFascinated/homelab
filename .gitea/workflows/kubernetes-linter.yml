@@ -3,7 +3,11 @@ name: Check Kubernetes YAMLs
 on:
   push:
     branches: [main, master]
+    paths:
+      - "apps/**"
   pull_request:
+    paths:
+      - "apps/**"
 
 jobs:
   scan:
