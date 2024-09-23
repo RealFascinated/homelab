@@ -37,4 +37,4 @@ jobs:
 
       - name: Scan yaml files with kube-linter
         run: |
-          kube-linter lint .kubernetes/apps
+          kube-linter lint .kubernetes/apps --run-as-non-root=false

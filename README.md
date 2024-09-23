@@ -20,13 +20,13 @@
 
 ### Infrastructure
 
--   ![Kubernetes][k8s]
--   ![Helm][helm]
--   ![Traefik][traefik]
--   ![Cert Manager][cert-manager]
--   ![Metallb][metallb]
--   ![NFS][nfs]
--   ![FluxCD][fluxcd]
+    -   ![Kubernetes][k8s]
+    -   ![Helm][helm]
+    -   ![Traefik][traefik]
+    -   ![Cert Manager][cert-manager]
+    -   ![Metallb][metallb]
+    -   ![NFS][nfs]
+    -   ![FluxCD][fluxcd]
 
 ### Services
 
@@ -36,12 +36,12 @@ See [services](./apps/production/) for a list of services that I use in my homel
 
 ## Todo
 
--   [ ] Hashicorp Vault & Consul
--   [ ] DroneCI
+    -   [ ] Hashicorp Vault & Consul
+    -   [ ] DroneCI
 
 ### Backlog
 
--   [ ] Add some kind of guides for how to use this
+    -   [ ] Add some kind of guides for how to use this
 
 See the [open issues](https://git.fascinated.cc/Fascinated/home-ops/issues) for a full list of proposed features (and known issues).
 
@@ -62,11 +62,3 @@ Don't forget to give the project a star! Thanks again!
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[fluxcd]: https://fluxcd.io
-[k8s]: https://kubernetes.io
-[helm]: https://helm.sh
-[traefik]: https://traefik.io
-[cert-manager]: https://cert-manager.io
-[metallb]: https://metallb.org
-[nfs]: https://nfs.fascinated.cc
