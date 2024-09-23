@@ -31,9 +31,10 @@ spec:
 
     additionalArguments:
       - "--serversTransport.insecureSkipVerify=true"
-      - "--log.level=INFO"
       - "--providers.kubernetescrd.allowCrossNamespace=true"
+      - "--log.level=INFO"
       - "--accesslog=true"
+      - "--metrics.prometheus=false"
 
     resources:
       requests:
