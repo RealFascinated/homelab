@@ -22,6 +22,13 @@ spec:
           ports:
             - containerPort: 80
             - containerPort: 443
+          # resources:
+          #   requests:
+          #     cpu: 50m
+          #     memory: 100Mi
+          #   limits:
+          #     cpu: 1000m # 1 vCPU
+          #     memory: 200Mi
           env:
             - name: DRONE_GITEA_SERVER
               value: "https://git.fascinated.cc"
