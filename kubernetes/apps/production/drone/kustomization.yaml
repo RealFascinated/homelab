@@ -4,8 +4,10 @@ kind: Kustomization
 namespace: drone-ci
 resources:
   - namespace.yaml
-  - sealed-secrets.yaml
-  - pvc.yaml
-  - deployment.yaml
-  - service.yaml
-  - ingress.yaml
+  - ./server/sealed-secrets.yaml
+  - ./server/pvc.yaml
+  - ./server/deployment.yaml
+  - ./server/service.yaml
+  - ./server/ingress.yaml
+  - ./runner/deployment.yaml
+  - ./runner/rbac.yaml
