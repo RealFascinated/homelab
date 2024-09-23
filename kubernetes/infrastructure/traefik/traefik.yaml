@@ -37,11 +37,11 @@ spec:
 
     resources:
       requests:
-        cpu: 100m
-        memory: 128Mi
+        cpu: 50m
+        memory: 256Mi
       limits:
-        cpu: 1000m # 1 vCPU
-        memory: 1024Mi # Update when traefik fixes their shitty mem leak
+        cpu: 200m
+        memory: 512Mi # Update when traefik fixes their shitty mem leak
 
     # Disable metrics
     metrics:
