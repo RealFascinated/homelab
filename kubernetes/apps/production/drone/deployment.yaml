@@ -24,7 +24,7 @@ spec:
             - containerPort: 443
           env:
             - name: DRONE_GITEA_SERVER
-              value: "https://try.gitea.io"
+              value: "https://git.fascinated.cc"
             - name: DRONE_GITEA_CLIENT_ID
               valueFrom:
                 secretKeyRef:
