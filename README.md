@@ -20,13 +20,13 @@
 
 ### Infrastructure
 
-- [![Kubernetes][k8s]]
-- [![Helm][helm]]
-- [![Traefik][traefik]]
-- [![Cert Manager][cert-manager]]
-- [![Metallb][metallb]]
-- [![NFS][nfs]]
-- [![FluxCD][fluxcd]]
+- ![Kubernetes][k8s]
+- ![Helm][helm]
+- ![Traefik][traefik]
+- ![Cert Manager][cert-manager]
+- ![Metallb][metallb]
+- ![NFS][nfs]
+- ![FluxCD][fluxcd]
 
 ### Services
 
