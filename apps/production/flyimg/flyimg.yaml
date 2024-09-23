@@ -117,7 +117,7 @@ data:
     # Default options values
     default_options:
       quality: 70
-      output: o_webp
+      output: webp
       unsharp: null
       sharpen: null
       blur: null
