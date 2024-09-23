@@ -26,8 +26,8 @@ spec:
               cpu: 50m
               memory: 100Mi
             limits:
-              cpu: 100m
-              memory: 250Mi
+              cpu: 1000m # 1 vCPU
+              memory: 200Mi
           volumeMounts:
             - name: flyimg-storage
               mountPath: /var/www/html/web/uploads
