@@ -37,6 +37,11 @@ See [services](./apps/production/) for a list of services that I use in my homel
 ## Todo
 
 - [ ] Hashicorp Vault & Consul
+- [ ] DroneCI
+
+### Backlog
+
+- [ ] Add some kind of guides for how to use this
 
 See the [open issues](https://git.fascinated.cc/Fascinated/home-ops/issues) for a full list of proposed features (and known issues).
 
