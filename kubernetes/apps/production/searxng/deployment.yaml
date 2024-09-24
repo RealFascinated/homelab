@@ -30,7 +30,6 @@ spec:
           volumeMounts:
             - name: searxng-config-volume
               mountPath: /etc/searxng
-              readOnly: true
           resources:
             requests:
               memory: "256Mi"
