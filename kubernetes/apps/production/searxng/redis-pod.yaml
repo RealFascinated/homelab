@@ -16,7 +16,6 @@ spec:
         limits:
           memory: "256Mi"
           cpu: "500m"
-      restartPolicy: Always
   volumes:
     - name: redis-data
       persistentVolumeClaim:
