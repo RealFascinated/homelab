@@ -7,6 +7,7 @@ resources:
   - cert-manager
   - crds
   - metallb
+  - fluxci
   - nfs
   - traefik
   - capacitor
