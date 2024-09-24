@@ -3,11 +3,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: public-services
 resources:
-  - pvc.yaml
+  - ./redis/pvc.yaml
+  - ./redis/redis.yaml
   - config.yaml
   - sealed-secrets.yaml
-  - ./redis/redis.yaml
-  - ./redis/service.yaml
   - deployment.yaml
   - service.yaml
   - ingress.yaml
