@@ -9,7 +9,7 @@
   <p align="center">
     Welcome to the configuration for my homelab.
     <br />
-    <a href="https://git.fascinated.cc/Fascinated/home-ops/issues">Report Bug</a>
+    <a href="https://git.fascinated.cc/Fascinated/home-ops/issues">Report Issue</a>
     ·
     <a href="https://git.fascinated.cc/Fascinated/home-ops/issues">Request Something</a>
 
