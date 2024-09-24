@@ -36,7 +36,7 @@ spec:
               subPath: settings.yml
           resources:
             requests:
-              memory: "256Mi"
+              memory: "384Mi"
               cpu: "100m"
             limits:
               memory: "512Mi"
