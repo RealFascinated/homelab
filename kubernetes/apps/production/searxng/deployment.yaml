@@ -29,7 +29,11 @@ spec:
                   key: secret_key
           volumeMounts:
             - name: searxng-config-volume
-              mountPath: /etc/searxng
+              mountPath: /etc/searxng/limiter.toml
+              subPath: limiter.toml
+            - name: searxng-config-volume
+              mountPath: /etc/searxng/settings.yml
+              subPath: settings.yml
           resources:
             requests:
               memory: "256Mi"
