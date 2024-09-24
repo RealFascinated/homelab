@@ -36,10 +36,10 @@ spec:
               subPath: settings.yml
           resources:
             requests:
-              memory: "384Mi"
+              memory: "1024Mi"
               cpu: "100m"
             limits:
-              memory: "512Mi"
+              memory: "1024M"
               cpu: "500m"
       volumes:
         - name: searxng-config-volume
