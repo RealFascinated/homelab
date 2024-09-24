@@ -5,6 +5,7 @@ namespace: public-services
 resources:
   - ./redis/pvc.yaml
   - ./redis/redis.yaml
+  - ./redis/service.yaml
   - config.yaml
   - sealed-secrets.yaml
   - deployment.yaml
