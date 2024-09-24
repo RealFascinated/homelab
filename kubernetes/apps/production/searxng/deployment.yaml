@@ -22,6 +22,15 @@ spec:
           env:
             - name: SEARXNG_BASE_URL
               value: "https://search.fascinated.cc"
+            - name: SEARXNG_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: searxng-secret
+                  key: secret_key
+          volumeMounts:
+            - name: searxng-config-volume
+              mountPath: /etc/searxng
+              readOnly: true
           resources:
             requests:
               memory: "256Mi"
@@ -29,3 +38,7 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
+      volumes:
+        - name: searxng-config-volume
+          configMap:
+            name: searxng-config

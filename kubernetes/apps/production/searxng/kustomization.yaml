@@ -4,6 +4,8 @@ kind: Kustomization
 namespace: public-services
 resources:
   - pvc.yaml
+  - config.yaml
+  - sealed-secrets.yaml
   - redis-pod.yaml
   - deployment.yaml
   - service.yaml
