@@ -6,7 +6,8 @@ resources:
   - pvc.yaml
   - config.yaml
   - sealed-secrets.yaml
-  - redis-pod.yaml
+  - ./redis/redis.yaml
+  - ./redis/service.yaml
   - deployment.yaml
   - service.yaml
   - ingress.yaml
