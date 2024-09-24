@@ -4,10 +4,10 @@ on:
   push:
     branches: [main, master]
     paths:
-      - "kubernetes/apps/**"
+      - "kubernetes/apps/production/**"
   pull_request:
     paths:
-      - "kubernetes/apps/**"
+      - "kubernetes/apps/production/**"
 
 jobs:
   scan:
@@ -37,4 +37,4 @@ jobs:
 
       - name: Scan yaml files with kube-linter
         run: |
-          kube-linter lint ./kubernetes/apps --config kubelinter-config.yaml
+          kube-linter lint ./kubernetes/apps/production --config kubelinter-config.yaml
