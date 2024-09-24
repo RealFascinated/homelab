@@ -11,7 +11,7 @@
     <br />
     <a href="https://git.fascinated.cc/Fascinated/home-ops/issues">Report Issue</a>
     ·
-    <a href="https://git.fascinated.cc/Fascinated/home-ops/issues">Request Something</a>
+    <a href="https://git.fascinated.cc/Fascinated/home-ops/issues">Request Feature/Service</a>
 
   </p>
 </div>
