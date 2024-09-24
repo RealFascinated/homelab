@@ -23,6 +23,9 @@ spec:
             - name: SEARXNG_BASE_URL
               value: "https://search.fascinated.cc"
           resources:
-            limits:
+            requests:
               memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
               cpu: "500m"
