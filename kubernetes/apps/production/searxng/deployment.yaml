@@ -22,7 +22,7 @@ spec:
           env:
             - name: SEARXNG_BASE_URL
               value: "https://search.fascinated.cc"
-            - name: SEARXNG_SECRET_KEY
+            - name: SEARXNG_SECRET
               valueFrom:
                 secretKeyRef:
                   name: searxng-secret
