@@ -52,7 +52,7 @@ spec:
             - name: DRONE_SERVER_PROTO
               value: "https"
             - name: DRONE_REGISTRATION_CLOSED
-              value: "false"
+              value: "true"
           volumeMounts:
             - name: drone-data
               mountPath: /data
