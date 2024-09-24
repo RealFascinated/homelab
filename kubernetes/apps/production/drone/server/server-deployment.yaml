@@ -48,7 +48,7 @@ spec:
                   name: drone-secret
                   key: DRONE_RPC_SECRET
             - name: DRONE_SERVER_HOST
-              value: "drone.local.fascinated.cc"
+              value: "drone.fascinated.cc"
             - name: DRONE_SERVER_PROTO
               value: "https"
             - name: DRONE_REGISTRATION_CLOSED
