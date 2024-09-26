@@ -1,0 +1,549 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    control-plane: controller-manager
+  name: eraser-system
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.9.0
+  creationTimestamp: null
+  name: imagejobs.eraser.sh
+spec:
+  group: eraser.sh
+  names:
+    kind: ImageJob
+    listKind: ImageJobList
+    plural: imagejobs
+    singular: imagejob
+  scope: Cluster
+  versions:
+    - name: v1
+      schema:
+        openAPIV3Schema:
+          description: ImageJob is the Schema for the imagejobs API.
+          properties:
+            apiVersion:
+              description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources"
+              type: string
+            kind:
+              description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+              type: string
+            metadata:
+              type: object
+            status:
+              description: ImageJobStatus defines the observed state of ImageJob.
+              properties:
+                deleteAfter:
+                  description: Time to delay deletion until
+                  format: date-time
+                  type: string
+                desired:
+                  description: desired number of pods
+                  type: integer
+                failed:
+                  description: number of pods that failed
+                  type: integer
+                phase:
+                  description: job running, successfully completed, or failed
+                  type: string
+                skipped:
+                  description: number of nodes that were skipped e.g. because they are not a linux node
+                  type: integer
+                succeeded:
+                  description: number of pods that completed successfully
+                  type: integer
+              required:
+                - desired
+                - failed
+                - phase
+                - skipped
+                - succeeded
+              type: object
+          type: object
+      served: true
+      storage: true
+      subresources:
+        status: {}
+    - deprecated: true
+      deprecationWarning: v1alpha1 of the eraser API has been deprecated. Please migrate to v1.
+      name: v1alpha1
+      schema:
+        openAPIV3Schema:
+          description: ImageJob is the Schema for the imagejobs API.
+          properties:
+            apiVersion:
+              description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources"
+              type: string
+            kind:
+              description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+              type: string
+            metadata:
+              type: object
+            status:
+              description: ImageJobStatus defines the observed state of ImageJob.
+              properties:
+                deleteAfter:
+                  description: Time to delay deletion until
+                  format: date-time
+                  type: string
+                desired:
+                  description: desired number of pods
+                  type: integer
+                failed:
+                  description: number of pods that failed
+                  type: integer
+                phase:
+                  description: job running, successfully completed, or failed
+                  type: string
+                skipped:
+                  description: number of nodes that were skipped e.g. because they are not a linux node
+                  type: integer
+                succeeded:
+                  description: number of pods that completed successfully
+                  type: integer
+              required:
+                - desired
+                - failed
+                - phase
+                - skipped
+                - succeeded
+              type: object
+          type: object
+      served: true
+      storage: false
+      subresources:
+        status: {}
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.9.0
+  creationTimestamp: null
+  name: imagelists.eraser.sh
+spec:
+  group: eraser.sh
+  names:
+    kind: ImageList
+    listKind: ImageListList
+    plural: imagelists
+    singular: imagelist
+  scope: Cluster
+  versions:
+    - name: v1
+      schema:
+        openAPIV3Schema:
+          description: ImageList is the Schema for the imagelists API.
+          properties:
+            apiVersion:
+              description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources"
+              type: string
+            kind:
+              description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+              type: string
+            metadata:
+              type: object
+            spec:
+              description: ImageListSpec defines the desired state of ImageList.
+              properties:
+                images:
+                  description: The list of non-compliant images to delete if non-running.
+                  items:
+                    type: string
+                  type: array
+              required:
+                - images
+              type: object
+            status:
+              description: ImageListStatus defines the observed state of ImageList.
+              properties:
+                failed:
+                  description: Number of nodes that failed to run the job
+                  format: int64
+                  type: integer
+                skipped:
+                  description: Number of nodes that were skipped due to a skip selector
+                  format: int64
+                  type: integer
+                success:
+                  description: Number of nodes that successfully ran the job
+                  format: int64
+                  type: integer
+                timestamp:
+                  description: Information when the job was completed.
+                  format: date-time
+                  type: string
+              required:
+                - failed
+                - skipped
+                - success
+                - timestamp
+              type: object
+          type: object
+      served: true
+      storage: true
+      subresources:
+        status: {}
+    - deprecated: true
+      deprecationWarning: v1alpha1 of the eraser API has been deprecated. Please migrate to v1.
+      name: v1alpha1
+      schema:
+        openAPIV3Schema:
+          description: ImageList is the Schema for the imagelists API.
+          properties:
+            apiVersion:
+              description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources"
+              type: string
+            kind:
+              description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+              type: string
+            metadata:
+              type: object
+            spec:
+              description: ImageListSpec defines the desired state of ImageList.
+              properties:
+                images:
+                  description: The list of non-compliant images to delete if non-running.
+                  items:
+                    type: string
+                  type: array
+              required:
+                - images
+              type: object
+            status:
+              description: ImageListStatus defines the observed state of ImageList.
+              properties:
+                failed:
+                  description: Number of nodes that failed to run the job
+                  format: int64
+                  type: integer
+                skipped:
+                  description: Number of nodes that were skipped due to a skip selector
+                  format: int64
+                  type: integer
+                success:
+                  description: Number of nodes that successfully ran the job
+                  format: int64
+                  type: integer
+                timestamp:
+                  description: Information when the job was completed.
+                  format: date-time
+                  type: string
+              required:
+                - failed
+                - skipped
+                - success
+                - timestamp
+              type: object
+          type: object
+      served: true
+      storage: false
+      subresources:
+        status: {}
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: eraser-controller-manager
+  namespace: eraser-system
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: eraser-imagejob-pods
+  namespace: eraser-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: eraser-imagejob-pods-cluster-role
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: eraser-manager-role
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - nodes
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - update
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - podtemplates
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - eraser.sh
+    resources:
+      - imagejobs
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - eraser.sh
+    resources:
+      - imagejobs/status
+    verbs:
+      - get
+      - patch
+      - update
+  - apiGroups:
+      - eraser.sh
+    resources:
+      - imagelists
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - eraser.sh
+    resources:
+      - imagelists/status
+    verbs:
+      - get
+      - patch
+      - update
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: eraser-imagejob-pods-cluster-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: eraser-imagejob-pods-cluster-role
+subjects:
+  - kind: ServiceAccount
+    name: eraser-imagejob-pods
+    namespace: eraser-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: eraser-manager-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: eraser-manager-role
+subjects:
+  - kind: ServiceAccount
+    name: eraser-controller-manager
+    namespace: eraser-system
+---
+apiVersion: v1
+data:
+  controller_manager_config.yaml: |
+    apiVersion: eraser.sh/v1alpha3
+    kind: EraserConfig
+    manager:
+      runtime:
+        name: containerd
+        address: unix:///run/containerd/containerd.sock
+      otlpEndpoint: ""
+      logLevel: info
+      scheduling:
+        repeatInterval: 24h
+        beginImmediately: true
+      profile:
+        enabled: false
+        port: 6060
+      imageJob:
+        successRatio: 1.0
+        cleanup:
+          delayOnSuccess: 0s
+          delayOnFailure: 24h
+      pullSecrets: [] # image pull secrets for collector/scanner/eraser
+      priorityClassName: "" # priority class name for collector/scanner/eraser
+      nodeFilter:
+        type: exclude # must be either exclude|include
+        selectors:
+          - eraser.sh/cleanup.filter
+          - kubernetes.io/os=windows
+    components:
+      collector:
+        enabled: true
+        image:
+          repo: ghcr.io/eraser-dev/collector
+          tag: v1.4.0-beta.0
+        request:
+          mem: 25Mi
+          cpu: 7m
+        limit:
+          mem: 500Mi
+          # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#how-pods-with-resource-limits-are-run
+          cpu: 0
+      scanner:
+        enabled: true
+        image:
+          repo: ghcr.io/eraser-dev/eraser-trivy-scanner # supply custom image for custom scanner
+          tag: v1.4.0-beta.0
+        request:
+          mem: 500Mi
+          cpu: 1000m
+        limit:
+          mem: 2Gi
+          # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#how-pods-with-resource-limits-are-run
+          cpu: 0
+        # The config needs to be passed through to the scanner as yaml, as a
+        # single string. Because we allow custom scanner images, the scanner is
+        # responsible for defining a schema, parsing, and validating.
+        config: |
+          # this is the schema for the provided 'trivy-scanner'. custom scanners
+          # will define their own configuration.
+          cacheDir: /var/lib/trivy
+          dbRepo: ghcr.io/aquasecurity/trivy-db
+          deleteFailedImages: true
+          deleteEOLImages: true
+          vulnerabilities:
+            ignoreUnfixed: true
+            types:
+              - os
+              - library
+            securityChecks:
+              - vuln
+            severities:
+              - CRITICAL
+              - HIGH
+              - MEDIUM
+              - LOW
+            ignoredStatuses:
+          timeout:
+            total: 23h
+            perImage: 1h
+      remover:
+        image:
+          repo: ghcr.io/eraser-dev/remover
+          tag: v1.4.0-beta.0
+        request:
+          mem: 25Mi
+          # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#how-pods-with-resource-limits-are-run
+          cpu: 0
+        limit:
+          mem: 30Mi
+          cpu: 0
+kind: ConfigMap
+metadata:
+  name: eraser-manager-config
+  namespace: eraser-system
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    control-plane: controller-manager
+  name: eraser-controller-manager
+  namespace: eraser-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      control-plane: controller-manager
+  template:
+    metadata:
+      labels:
+        control-plane: controller-manager
+    spec:
+      containers:
+        - args:
+            - --config=/config/controller_manager_config.yaml
+          command:
+            - /manager
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
+            - name: OTEL_SERVICE_NAME
+              value: eraser-manager
+          image: ghcr.io/eraser-dev/eraser-manager:v1.4.0-beta.0
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8081
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          name: manager
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8081
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            limits:
+              memory: 30Mi
+            requests:
+              cpu: 100m
+              memory: 20Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+            seccompProfile:
+              type: RuntimeDefault
+          volumeMounts:
+            - mountPath: /config
+              name: manager-config
+      nodeSelector:
+        kubernetes.io/os: linux
+      serviceAccountName: eraser-controller-manager
+      terminationGracePeriodSeconds: 10
+      volumes:
+        - configMap:
+            name: eraser-manager-config
+          name: manager-config
