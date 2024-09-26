@@ -34,7 +34,7 @@ See [services](./apps/production/) for a list of services that I use in my homel
 
 ## Todo
 
-- [ ] Migrate my apps from Dokku to DroneCI
+Nothing !
 
 ### Backlog
 
