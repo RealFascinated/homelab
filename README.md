@@ -18,15 +18,15 @@
 
 ### Infrastructure
 
-- ![Kubernetes][k8s] - Isn't it obvious?
-- ![Helm][helm] - Easily deploy and manage Kubernetes applications
-- ![Traefik][traefik] - Web reverse proxy
-- ![Cert Manager][cert-manager] - Generates LetsEncrypt certificates
-- ![Metallb][metallb] - Load Balancer
-- ![NFS][nfs] - Remote Storage for PVs
-- ![FluxCD][fluxcd] - GitOps
-- ![Spegel][spegel] - Local Docker registry cache
-- ![Eraser][eraser] - Automated cleanup of old docker images
+- [Kubernetes][k8s] - Isn't it obvious?
+- [Helm][helm] - Easily deploy and manage Kubernetes applications
+- [Traefik][traefik] - Web reverse proxy
+- [Cert Manager][cert-manager] - Generates LetsEncrypt certificates
+- [Metallb][metallb] - Load Balancer
+- [NFS][nfs] - Remote Storage for PVs
+- [FluxCD][fluxcd] - GitOps
+- [Spegel][spegel] - Local Docker registry cache
+- [Eraser][eraser] - Automated cleanup of old docker images
 
 ### Services
 
@@ -62,12 +62,12 @@ Don't forget to give the project a star! Thanks again!
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[fluxcd]: https://fluxcd.io
-[k8s]: https://kubernetes.io
-[helm]: https://helm.sh
-[traefik]: https://traefik.io
-[cert-manager]: https://cert-manager.io
-[metallb]: https://metallb.org
-[nfs]: https://nfs.fascinated.cc
-[spegel]: https://github.com/spegel-org/spegel
-[eraser]: https://eraser-dev.github.io
+[fluxcd]: https://fluxcd.io/
+[k8s]: https://kubernetes.io/
+[helm]: https://helm.sh/
+[traefik]: https://traefik.io/
+[cert-manager]: https://cert-manager.io/
+[metallb]: https://metallb.org/
+[nfs]: https://nfs.fascinated.cc/
+[spegel]: https://github.com/spegel-org/spegel/
+[eraser]: https://eraser-dev.github.io/
