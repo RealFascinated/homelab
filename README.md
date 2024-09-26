@@ -70,4 +70,4 @@ Don't forget to give the project a star! Thanks again!
 [metallb]: https://metallb.org/
 [nfs]: https://nfs.fascinated.cc/
 [spegel]: https://github.com/spegel-org/spegel/
-[eraser]: https://eraser-dev.github.io/
+[eraser]: https://github.com/eraser-dev/eraser/
