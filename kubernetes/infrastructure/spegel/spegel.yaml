@@ -24,8 +24,8 @@ spec:
         kind: HelmRepository
         name: spegel
   values:
-    containerdRegistryConfigPath: /etc/cri/conf.d/hosts
     spegel:
+      containerdRegistryConfigPath: /etc/cri/conf.d/hosts
       registries:
         [
           "https://cgr.dev",
