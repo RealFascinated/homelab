@@ -24,8 +24,7 @@ spec:
         kind: HelmRepository
         name: spegel
   values:
-    image:
-      pullPolicy: Always
+    containerdRegistryConfigPath: /etc/cri/conf.d/hosts
     spegel:
       registries:
         [

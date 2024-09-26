@@ -30,7 +30,7 @@
 
 ### Services
 
-See [services](./apps/production/) for a list of services that I use in my homelab.
+See [services](./kubernetes/apps/production/) for a list of services that I use in my homelab.
 
 <!-- TODO -->
 
