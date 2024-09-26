@@ -18,13 +18,15 @@
 
 ### Infrastructure
 
-- ![Kubernetes][k8s]
-- ![Helm][helm]
-- ![Traefik][traefik]
-- ![Cert Manager][cert-manager]
-- ![Metallb][metallb]
-- ![NFS][nfs]
-- ![FluxCD][fluxcd]
+- ![Kubernetes][k8s] - Isn't it obvious?
+- ![Helm][helm] - Easily deploy and manage Kubernetes applications
+- ![Traefik][traefik] - Web reverse proxy
+- ![Cert Manager][cert-manager] - Generates LetsEncrypt certificates
+- ![Metallb][metallb] - Load Balancer
+- ![NFS][nfs] - Remote Storage for PVs
+- ![FluxCD][fluxcd] - GitOps
+- ![Spegel][spegel] - Local Docker registry cache
+- ![Eraser][eraser] - Automated cleanup of old docker images
 
 ### Services
 
@@ -67,3 +69,5 @@ Don't forget to give the project a star! Thanks again!
 [cert-manager]: https://cert-manager.io
 [metallb]: https://metallb.org
 [nfs]: https://nfs.fascinated.cc
+[spegel]: https://github.com/spegel-org/spegel
+[eraser]: https://eraser-dev.github.io
