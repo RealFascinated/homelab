@@ -36,7 +36,7 @@ See [services](./kubernetes/apps/production/) for a list of services that I use 
 
 ## Todo
 
-Nothing !
+- [ ] Setup Grafana and Traefik metrics
 
 ### Backlog
 
