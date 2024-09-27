@@ -68,6 +68,6 @@ Don't forget to give the project a star! Thanks again!
 [traefik]: https://traefik.io/
 [cert-manager]: https://cert-manager.io/
 [metallb]: https://metallb.org/
-[nfs]: https://nfs.fascinated.cc/
+[nfs]: https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner/
 [spegel]: https://github.com/spegel-org/spegel/
 [eraser]: https://github.com/eraser-dev/eraser/
