@@ -26,6 +26,8 @@ spec:
       middlewares:
         - name: default-headers
           namespace: traefik
+        - name: compress
+          namespace: traefik
       services:
         - name: paste-grafana-local-external
           port: 3035

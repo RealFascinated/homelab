@@ -26,6 +26,8 @@ spec:
       middlewares:
         - name: default-headers
           namespace: traefik
+        - name: compress
+          namespace: traefik
       services:
         - name: restic-backups-external
           port: 8000

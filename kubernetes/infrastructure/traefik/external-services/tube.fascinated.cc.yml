@@ -26,6 +26,8 @@ spec:
       middlewares:
         - name: default-headers
           namespace: traefik
+        - name: compress
+          namespace: traefik
       services:
         - name: tube-external
           port: 8209

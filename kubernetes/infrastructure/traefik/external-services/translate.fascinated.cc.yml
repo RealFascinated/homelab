@@ -26,6 +26,8 @@ spec:
       middlewares:
         - name: default-headers
           namespace: traefik
+        - name: compress
+          namespace: traefik
       services:
         - name: translate-external
           port: 5000

@@ -1,19 +1,19 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: slash-external
+  name: trigger-external
   namespace: traefik
 spec:
   type: ExternalName
-  externalName: 10.0.50.133
+  externalName: 10.0.50.205
   ports:
     - name: http
-      port: 5231
+      port: 3040
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: slash-external-ingress
+  name: trigger-external-ingress
   namespace: traefik
   annotations:
     kubernetes.io/ingress.class: traefik-external
@@ -21,7 +21,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`s.fascinated.cc`)
+    - match: Host(`trigger.fascinated.cc`)
       kind: Rule
       middlewares:
         - name: default-headers
@@ -29,7 +29,7 @@ spec:
         - name: compress
           namespace: traefik
       services:
-        - name: slash-external
-          port: 5231
+        - name: trigger-external
+          port: 3040
   tls:
     secretName: fascinated-cc

@@ -14,6 +14,8 @@ spec:
       middlewares:
         - name: default-headers
           namespace: traefik
+        - name: compress
+          namespace: traefik
       services:
         - name: kube-prometheus-stack-grafana
           port: 80
