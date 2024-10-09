@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: flyimg-container
-          image: flyimg/flyimg:1.4.13
+          image: flyimg/flyimg:1.4.14
           securityContext:
             allowPrivilegeEscalation: false
           ports:
