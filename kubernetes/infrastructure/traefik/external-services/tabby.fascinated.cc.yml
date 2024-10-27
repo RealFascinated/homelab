@@ -1,0 +1,33 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: tabby-external
+  namespace: traefik
+spec:
+  type: ExternalName
+  externalName: 10.0.0.136
+  ports:
+    - name: http
+      port: 8280
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: tabby-external-ingress
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`tabby.fascinated.cc`)
+      kind: Rule
+      middlewares:
+        - name: default-headers
+          namespace: traefik
+      services:
+        - name: tabby-external
+          port: 8280
+  tls:
+    secretName: fascinated-cc
